@@ -1,0 +1,44 @@
+<template>
+    <div id="nav">
+    <nav class="navbar navbar-expand-md navbar-light bg-light px-3">
+      <!-- <a class="navbar-brand" href="#">首頁</a> -->
+        <router-link to="/index" class="nav-link">首頁</router-link>
+      <router-link to="/dashboard" class="nav-link">後台首頁</router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <router-link to="/dashboard/ProductsList" class="nav-link">產品明細頁</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/dashboard/analysize" class="nav-link">報表分析頁</router-link>
+          </li>
+        </ul>
+          <ul class="navbar-nav ms-auto">
+            <li>
+               <router-link to="/dashboard/loginBack" class="nav-link">後台登入</router-link>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="scss">
+.navbar{
+  background-color: $mainColor !important;
+   /* #214c6f; */
+  a {
+    color:white !important
+  }
+}
+</style>

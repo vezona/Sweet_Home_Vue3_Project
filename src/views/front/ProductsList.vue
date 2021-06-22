@@ -31,7 +31,7 @@
                                   </div>
                                   查看更多
                               </button>  -->
-                              <router-link :to="`/product/${item.id}`" class="btn  btn-outline-secondary">查看更多</router-link>
+                              <router-link :to="`/index/product/${item.id}`" class="btn  btn-outline-secondary">查看更多</router-link>
                               <button type="button" class="btn  btn-outline-danger">加到購物車</button>
                           </div>
                       </td>

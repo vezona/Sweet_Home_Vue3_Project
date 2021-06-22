@@ -34,7 +34,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 
-// CSS
+// 引入BS的JS
+// import 'jquery'
+// import 'bootstrap'
+
+// 自訂的common scss
 import './assets/css/common.scss'
 
 defineRule('required', required)
