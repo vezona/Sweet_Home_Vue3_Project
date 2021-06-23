@@ -5,7 +5,9 @@
 </template>
 
 <style lang="scss">
-@import "bootstrap";
+// 因為要客製化BS的SCSS，已經在assets裡面調整了，所以這邊改成引入assets的scss
+// @import "bootstrap";
+@import "./assets/css/common.scss";
 
 </style>
 

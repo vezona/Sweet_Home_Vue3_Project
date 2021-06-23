@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
         <h1 class="h3 my-3 text-center font-weight-normal">
-            請先登入
+            會員登入
         </h1>
         <div class="col-8">
             <form id="form" class="form-signin">

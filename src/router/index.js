@@ -10,11 +10,17 @@ const routes = [
     path: '/:pathMatch(.*)*',
     component: () => import('../components/404.vue')
   },
-  // 前台
+  // 前台首頁
   {
-    path: '/index',
-    name: 'index',
-    component: () => import('../views/front/index.vue'),
+    path: '/indexfront',
+    name: 'IndexFront',
+    component: () => import('../views/front/IndexFront.vue')
+  },
+  // 前台內頁
+  {
+    path: '/dashboardF',
+    name: 'dashboardF',
+    component: () => import('../views/front/Dashboard.vue'),
     // 前台的槽狀結構
     children: [
       {
@@ -56,8 +62,21 @@ const routes = [
         component: () => import('../views/back/LoginBack.vue')
       },
       {
+        path: 'IndexBack',
+        name: 'IndexBack',
+        component: () => import('../views/back/IndexBack.vue')
+      },
+      {
         path: 'productsList',
         component: () => import('../views/back/ProductsList.vue')
+      },
+      {
+        path: 'orders',
+        component: () => import('../views/back/Orders.vue')
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/back/Coupons.vue')
       }
     ]
   }
