@@ -40,7 +40,8 @@
 
 <script>
 // @ is an alias to /src
-import loading from '@/components/Loading.vue'
+// 這邊是區域註冊，改用全域註冊的loading
+// import loading from '@/components/Loading.vue'
 
 export default {
   name: 'ProductsList',

@@ -41,6 +41,9 @@ import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icon
 // 自訂的common scss
 import './assets/css/common.scss'
 
+// 引入自定的元件，進行元域註冊
+import loading from './components/Loading.vue'
+
 defineRule('required', required)
 defineRule('email', email)
 defineRule('min', min)
@@ -64,3 +67,6 @@ library.add(faUserSecret, faShoppingCart, faInstagram, faFacebookSquare)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 app.mount('#app')
+
+// 全域註冊 Loading 元件
+app.component('loading', loading)
