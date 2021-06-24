@@ -45,7 +45,7 @@
 
 export default {
   name: 'ProductsList',
-  components: { loading },
+  // components: { loading }, 改用全域註冊的loading這邊就不用加了，直接用
   data () {
     return {
       user: {},

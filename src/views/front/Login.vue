@@ -19,6 +19,8 @@
                 <button class="btn btn-lg btn-submit w-100 mt-3" type="submit" @click.prevent="sendUser">
                     登入
                 </button>
+                <div class="admin_login d-flex align-items-center justify-content-center">管理員請
+                    <router-link to="/loginBack" class="nav-link">由此登入</router-link></div>
             </form>
         </div>
     </div>
@@ -39,5 +41,8 @@ export default {
 </script>
 
 <style>
+.admin_login{
+  padding: 0.5rem 1rem
+}
 
 </style>

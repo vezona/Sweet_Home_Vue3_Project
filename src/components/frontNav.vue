@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-light px-3">
       <!-- <a class="navbar-brand" href="#">首頁</a> -->
       <router-link to="/indexfront" class="nav-link">首頁</router-link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -47,9 +47,6 @@
               <span class="material-icons">
                  <router-link to="/dashboardF/login" class="nav-link member_login">perm_identity</router-link>
               </span>
-            </li>
-            <li>
-               <router-link to="/dashboard/loginBack" class="nav-link">後台登入</router-link>
             </li>
           </ul>
       </div>

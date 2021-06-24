@@ -50,17 +50,18 @@ const routes = [
         component: () => import('../views/front/Login.vue')
       }]
   },
-  // 後台登入
+  // 後台登入，一般會拉出來另外放，因為驗證會做在後台的dashboard上
+  {
+    path: '/loginBack',
+    name: 'loginBack',
+    component: () => import('../views/back/LoginBack.vue')
+  },
+  // 後台Router
   {
     path: '/dashboard',
     component: () => import('../views/back/Dashboard.vue'),
     // 後台的槽狀結構
     children: [
-      {
-        path: 'loginBack',
-        name: 'loginBack',
-        component: () => import('../views/back/LoginBack.vue')
-      },
       {
         path: 'IndexBack',
         name: 'IndexBack',

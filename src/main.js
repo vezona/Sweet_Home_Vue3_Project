@@ -34,9 +34,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 
+// 引入BS的JS檔
+import bootstrap from 'bootstrap'
+
 // 引入BS的JS
-// import 'jquery'
-// import 'bootstrap'
+import Modal from 'bootstrap/js/dist/modal'
 
 // 自訂的common scss
 import './assets/css/common.scss'
@@ -44,6 +46,7 @@ import './assets/css/common.scss'
 // 引入自定的元件，進行元域註冊
 import loading from './components/Loading.vue'
 
+// veeValidation
 defineRule('required', required)
 defineRule('email', email)
 defineRule('min', min)
@@ -66,7 +69,12 @@ app.use(VueAxios, axios)
 library.add(faUserSecret, faShoppingCart, faInstagram, faFacebookSquare)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
-app.mount('#app')
+// 引入BS、BS的Modal 元件
+app.use(bootstrap)
+app.component('Modal', Modal)
 
-// 全域註冊 Loading 元件
+// 全域註冊 Loading、BS的Modal 元件
 app.component('loading', loading)
+
+// 元件綁定
+app.mount('#app')
