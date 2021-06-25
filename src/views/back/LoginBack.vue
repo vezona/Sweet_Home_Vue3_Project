@@ -1,4 +1,5 @@
 <template>
+  <backNav></backNav>
   <div class="container">
     <div class="row justify-content-center">
         <h1 class="h3 my-3 text-center font-weight-normal">
@@ -26,8 +27,10 @@
 </template>
 
 <script>
+import backNav from '../../components/backNav.vue'
 export default {
   name: 'login',
+  components: { backNav },
   data () {
     return {
       username: '',

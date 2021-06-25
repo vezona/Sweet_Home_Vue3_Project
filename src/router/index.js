@@ -68,7 +68,7 @@ const routes = [
         component: () => import('../views/back/IndexBack.vue')
       },
       {
-        path: 'productsList',
+        path: 'productslist',
         component: () => import('../views/back/ProductsList.vue')
       },
       {

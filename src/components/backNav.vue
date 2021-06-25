@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <router-link to="/dashboard/ProductsList" class="nav-link">產品列表</router-link>
+            <router-link to="/dashboard/productslist" class="nav-link">產品列表</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/dashboard/orders" class="nav-link">訂單列表</router-link>
@@ -23,11 +23,6 @@
             <router-link to="/dashboard/analysize" class="nav-link">報表分析</router-link>
           </li>
         </ul>
-          <ul class="navbar-nav ms-auto">
-            <li>
-               <router-link to="/dashboard/loginBack" class="nav-link">後台登入</router-link>
-            </li>
-          </ul>
       </div>
     </nav>
   </div>

@@ -35,10 +35,10 @@ import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icon
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 
 // 引入BS的JS檔
-import bootstrap from 'bootstrap'
+import 'bootstrap'
 
 // 引入BS的JS
-import Modal from 'bootstrap/js/dist/modal'
+// import Modal from 'bootstrap/js/dist/modal'
 
 // 自訂的common scss
 import './assets/css/common.scss'
@@ -68,10 +68,6 @@ app.use(VueAxios, axios)
 // use fontAwesome
 library.add(faUserSecret, faShoppingCart, faInstagram, faFacebookSquare)
 app.component('font-awesome-icon', FontAwesomeIcon)
-
-// 引入BS、BS的Modal 元件
-app.use(bootstrap)
-app.component('Modal', Modal)
 
 // 全域註冊 Loading、BS的Modal 元件
 app.component('loading', loading)

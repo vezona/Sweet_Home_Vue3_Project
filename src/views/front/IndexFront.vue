@@ -14,11 +14,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar{
-  background-color: black !important;
+/deep/ .navbar{
+  background-color: transparent !important;
    /* #214c6f; */
   a {
-    color: white !important;
+    color: black !important;
   }
 }
 </style>

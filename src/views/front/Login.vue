@@ -31,7 +31,10 @@
 export default {
   name: 'login',
   data () {
-    return {}
+    return {
+      username: '',
+      password: ''
+    }
   },
   created () {},
   mounted () {},
