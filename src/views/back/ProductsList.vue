@@ -52,11 +52,15 @@
         </tbody>
     </table>
   </div>
+  <!-- Modals -->
+  <delmodal ref="deleteModal" :temp="tempProduct" :api-url="apiUrl" :api-path="apiPath" @get-data-child="getData">
+  </delmodal>
   <showmodal ref="productModal" :temp="tempProduct" :is-new="isNew"></showmodal>
 </template>
 
 <script>
 import showmodal from '../../components/editModal.vue'
+import delmodal from '../../components/delModel.vue'
 export default {
   data () {
     return {
@@ -71,20 +75,20 @@ export default {
     }
   },
   components: {
-    // delmodal,
+    delmodal,
     showmodal
     // pagination
   },
   created () {
-    // // 先把登入頁取到token保留下來
-    // const token = document.cookie.replace(/(?:(?:^|.*;\s*)hextoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
-    // if (!token) {
-    //   alert('沒有token')
-    //   // window.location = './w4_mainHW_login.html'
-    // }
+    // 先把登入頁取到token保留下來
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hextoken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+    if (!token) {
+      alert('沒有token')
+      // window.location = './w4_mainHW_login.html'
+    }
 
-    // // 接著要把token帶入api header 進行驗證，否則會取不到資料，也無法編輯刪除
-    // this.$http.defaults.headers.common.Authorization = token
+    // 接著要把token帶入api header 進行驗證，否則會取不到資料，也無法編輯刪除
+    this.$http.defaults.headers.common.Authorization = token
 
     // 取得產品資料
     this.getData()
@@ -93,7 +97,7 @@ export default {
     getData () {
       this.$http.get(`${this.apiUrl}/api/${this.apiPath}/admin/products?page=1`)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           if (res.data.success) {
             // console.log(res.data.products)
             // console.log(res.data.pagination)
@@ -121,9 +125,10 @@ export default {
         this.tempProduct = {
           ...item
         }
-        console.log(this.tempProduct)
+        // console.log('productList', this.tempProduct)
         this.$refs.productModal.openProductModal()
       } else if (detect === 'new') {
+        this.isNew = true
         this.tempProduct = {
           imagesUrl: []
         }

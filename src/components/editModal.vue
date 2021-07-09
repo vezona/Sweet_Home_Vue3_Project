@@ -15,20 +15,11 @@
                     <div class="col-sm-4">
                         <div class="mb-1">
                             <div class="form-group">
-                                <label for="imageUrl">輸入圖片網址</label>
+                                <label for="imageUrl">主圖網址</label>
                                 <input type="text" class="form-control" placeholder="請輸入圖片連結" v-model="temProduct.imageUrl">
+                               <img class="img-fluid" :src="temProduct.imageUrl" alt="">
                             </div>
-                            <img class="img-fluid" :src="temProduct.imageUrl" alt="">
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-primary btn-sm d-block w-100">
-                                新增圖片
-                            </button>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-danger btn-sm d-block w-100">
-                                刪除圖片
-                            </button>
+
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -109,19 +100,18 @@ export default {
   props: ['isNew', 'temp'],
   mounted () {
     // 編輯或新增的Modal
-    console.log(this.$refs)
+    // console.log(this.$refs)
     // 用refs取得Dom元素
     this.productModal = new Modal(this.$refs.productModal)
     // this.temProduct = { ...this.temp }
   },
   watch: {
-    temProduct () {
+    temp () {
       this.temProduct = this.temp
     }
   },
   methods: {
     openProductModal () {
-      console.log(this.temp)
       this.productModal.show()
     },
     closeProductModal () {
