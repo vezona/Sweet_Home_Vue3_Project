@@ -52,11 +52,15 @@
         </tbody>
     </table>
   </div>
+  <!-- Modals -->
+  <delmodal ref="deleteModal" :temp="tempProduct" :api-url="apiUrl" :api-path="apiPath" @get-data-child="getData">
+  </delmodal>
   <showmodal ref="productModal" :temp="tempProduct" :is-new="isNew"></showmodal>
 </template>
 
 <script>
 import showmodal from '../../components/editModal.vue'
+import delmodal from '../../components/delModel.vue'
 export default {
   data () {
     return {
@@ -71,7 +75,7 @@ export default {
     }
   },
   components: {
-    // delmodal,
+    delmodal,
     showmodal
     // pagination
   },
