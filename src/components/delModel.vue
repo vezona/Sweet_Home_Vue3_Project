@@ -1,29 +1,45 @@
 <template>
-    <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
-        aria-labelledby="delProductModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content border-0">
-                <div class="modal-header bg-danger text-white">
-                    <h5 id="delProductModalLabel" class="modal-title">
-                        <span>刪除產品</span>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    是否刪除
-                    <strong class="text-danger">{{temProduct.title}}</strong> 商品(刪除後將無法恢復)。
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        取消
-                    </button>
-                    <button type="button" class="btn btn-danger" @click="deleteProduct">
-                        確認刪除
-                    </button>
-                </div>
-            </div>
+  <div
+    id="delProductModal"
+    ref="delProductModal"
+    class="modal fade"
+    tabindex="-1"
+    aria-labelledby="delProductModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-danger text-white">
+          <h5 id="delProductModalLabel" class="modal-title">
+            <span>刪除產品</span>
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
+        <div class="modal-body">
+          是否刪除
+          <strong class="text-danger">{{ temProduct.title }}</strong>
+          商品(刪除後將無法恢復)。
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-dismiss="modal"
+          >
+            取消
+          </button>
+          <button type="button" class="btn btn-danger" @click="deleteProduct">
+            確認刪除
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -39,7 +55,7 @@ export default {
   props: ['temp', 'apiUrl', 'apiPath'],
   mounted () {
     // 用refs取得Dom元素
-    this.delmodal = new Modal(this.$refs.delmodal)
+    this.delmodal = new Modal(this.$refs.delProductModal)
   },
   watch: {
     temp () {
@@ -55,8 +71,11 @@ export default {
     },
     // 刪除
     deleteProduct () {
-      this.$http.delete(`${this.apiUrl}/api/${this.apiPath}/admin/product/${this.temp.id}`)
-        .then(res => {
+      this.$http
+        .delete(
+          `${this.apiUrl}/api/${this.apiPath}/admin/product/${this.temp.id}`
+        )
+        .then((res) => {
           console.log(res)
           if (res.data.success) {
             // 成功刪除後，要跳出成功刪除alert+關掉Modal+重新渲染畫面
@@ -67,7 +86,7 @@ export default {
             alert(res.data.message)
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error)
         })
     },
@@ -75,10 +94,7 @@ export default {
       this.$emit('getDataChild', this.temp)
     }
   }
-
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
