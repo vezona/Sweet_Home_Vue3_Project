@@ -268,11 +268,15 @@ export default {
           this.productModal.hide()
           alert(res.data.message)
           this.$emit('renderData')
-          this.getData() // 還要再重新渲染一次頁面
+          // 發送事件觸發母元件getData，重新渲染一次頁面
+          this.getDataChild()
         } else {
           alert(res.data.message)
         }
       })
+    },
+    getDataChild () {
+      this.$emit('getDataChild', this.temp)
     }
   }
 }

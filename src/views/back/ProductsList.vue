@@ -66,6 +66,7 @@
     :is-new="isNew"
     :api-url="apiUrl"
     :api-path="apiPath"
+    @get-data-child="getData"
   ></showmodal>
 </template>
 

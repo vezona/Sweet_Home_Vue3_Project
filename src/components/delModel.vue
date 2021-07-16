@@ -81,6 +81,7 @@ export default {
             // 成功刪除後，要跳出成功刪除alert+關掉Modal+重新渲染畫面
             alert(res.data.message)
             this.delmodal.hide()
+            // 發送事件觸發母元件getData，重新渲染一次頁面
             this.getDataChild()
           } else {
             alert(res.data.message)

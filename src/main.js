@@ -26,19 +26,17 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+// 不使用fontawesome
 // fontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-// 購物車等得另外引入
-import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faUserSecret, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// // 購物車等得另外引入
+// import { faFacebookSquare, faInstagram } from '@fortawesome/free-brands-svg-icons'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 
-// 引入BS的JS檔
-import 'bootstrap'
-
-// 引入BS的JS
-// import Modal from 'bootstrap/js/dist/modal'
+// 引入BS的JS檔 (不引入反而可以動??)
+// import 'bootstrap'
 
 // 自訂的common scss
 import './assets/css/common.scss'
@@ -66,8 +64,8 @@ app.component('ErrorMessage', ErrorMessage)
 app.use(VueAxios, axios)
 
 // use fontAwesome
-library.add(faUserSecret, faShoppingCart, faInstagram, faFacebookSquare)
-app.component('font-awesome-icon', FontAwesomeIcon)
+// library.add(faUserSecret, faShoppingCart, faInstagram, faFacebookSquare)
+// app.component('font-awesome-icon', FontAwesomeIcon)
 
 // 全域註冊 Loading、BS的Modal 元件
 app.component('loading', loading)
