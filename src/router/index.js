@@ -78,6 +78,14 @@ const routes = [
       {
         path: 'coupons',
         component: () => import('../views/back/Coupons.vue')
+      },
+      {
+        path: 'analysize',
+        component: () => import('../views/back/Analysize.vue')
+      },
+      {
+        path: 'UploadImg',
+        component: () => import('../views/back/Upload_img.vue')
       }
     ]
   }
