@@ -12,6 +12,40 @@
 
 @import "~bootstrap";
 
+
+// media 設定
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+    *{
+        font-size: 14px;
+    }
+    .material-icons a{
+        font-size: 1.5rem;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+// 比768大以上
+@media (min-width: 578px) and (max-width: 768px) {
+    *{
+        font-size: 16px;
+    }
+
+}
+
+// // Large devices (desktops, 992px and up)
+// @media (max-width: 992px) {}
+
+// // X-Large devices (large desktops, 1200px and up)
+// @media (max-width: 1200px) {
+//     *{
+//         font-size: 16px;
+//     }
+// }
+
+// // XX-Large devices (larger desktops, 1400px and up)
+// @media (max-width: 1400px) {}
+
 // 變數設定
 // 藍色
 // $mainColor:#054e87;
@@ -45,4 +79,9 @@ $mainColor:#2b6d7e;
 .form-control:focus{
 box-shadow: 0 0 0 0.25rem rgba($mainColor,.5);
 border-color: $mainColor;
+}
+
+img{
+    width: 100%;
+    height: auto;
 }

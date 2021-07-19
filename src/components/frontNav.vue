@@ -4,6 +4,28 @@
       <!-- <a class="navbar-brand" href="#">首頁</a> -->
       <router-link to="/indexfront" class="nav-link">首頁</router-link>
 
+        <!-- 購物車跟登入icon -->
+      <ul class="navbar-nav flex-row">
+          <li class="me-3">
+            <span class="material-icons">
+                <router-link to="/dashboardF/login" class="nav-link member_login">perm_identity</router-link>
+            </span>
+          </li>
+          <li class="me-3">
+            <span class="material-icons">
+                <router-link to="/dashboardF/cart" class="nav-link">
+                shopping_cart</router-link>
+            </span>
+          </li>
+          <li class="me-3">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </li>
+      </ul>
+
       <!-- 收闔列表 -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav w-100 justify-content-around">
@@ -36,27 +58,6 @@
         </ul>
       </div>
 
-      <!-- 購物車跟登入icon -->
-      <ul class="navbar-nav flex-row me-3">
-          <li>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </li>
-          <li>
-            <span class="material-icons">
-                <router-link to="/dashboardF/login" class="nav-link member_login">perm_identity</router-link>
-            </span>
-          </li>
-          <li>
-            <span class="material-icons">
-                <router-link to="/dashboardF/cart" class="nav-link">
-                shopping_cart</router-link>
-            </span>
-          </li>
-      </ul>
     </nav>
   </div>
 </template>
@@ -67,7 +68,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .navbar{
   background-color: $mainColor !important;
    /* #214c6f; */
