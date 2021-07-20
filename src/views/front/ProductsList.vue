@@ -1,7 +1,8 @@
 <template>
   <div class="wrap pt-5">
-    <div class="container d-flex">
-      <aside class="col-3">
+    <loading v-if="loading"></loading>
+    <div class="container d-flex flex-wrap justify-content-center">
+      <aside class="col-12 col-sm-2 col-md-2 col-lg-2">
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -78,66 +79,26 @@
         </div>
       </aside>
       <div
-        class="productList col-9 d-flex flex-wrap justify-content-between px-3"
+        class="productList col-12 col-sm-10 d-flex flex-wrap justify-content-between px-3"
       >
-        <div class="card-wrap col-5 mb-4" v-for="i in 5" :key="i">
-          <img
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/ffjjgogogo/1626579585721.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Pjt%2BVrnK6JVZhDmzVo%2BRifmABnwPGLDOH1rGa5KhyE3gV258%2BvFYtpUjahZ52vNakVx4Z3I6Ju1em0pm1Ph%2F7f05iwcQT2URKmcNjF12aJDE39qRAmlV1dRTRNPCRhkX8zhfuAj5duOzQT7f3C%2FqAIgD57TjZI%2FVchc4BySN5s3D77iIc%2BE0AS5nVKr4tofhzq6VRvmG1Aj8ZNONoq4k6XIKBvCbkKuQU79Jtm%2BNcoUIeOZnUe7UcTmh6SEGZtmE8U64eiKHgCpAEIoGimK6pzNjPOAcmzTRs3ackG3bOLofYC2KgNuf1CUfkzkj8UCH6476%2FuIi2vQ4dLHQStDuhA%3D%3D"
-            alt=""
-          />
-          <div class="text-wrap text-center">
-            <div class="name">商品名稱</div>
-            <div>價格</div>
-            <button type="button" class="btn">查看更多</button>
+     <div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2" v-for="item in products" :key="item.id">
+        <div class="card-wrap mb-4" >
+          <router-link class="productWrap" :to="`/dashboardF/product/${item.id}`">
+            <div class="img-wrap">
+              <img :src="item.imageUrl" alt="" />
+            </div>
+            <div class="text-wrap text-center p-3">
+              <div class="name">{{ item.title }}</div>
+              <div class="price">特價 {{ item.price }}</div>
+              <div class="origin_price">原價 {{ item.origin_price }}</div>
+            </div>
+          </router-link>
+          <hr class="m-0 px-2">
+          <div class="buy text-center p-3">
+             <button type="button" class="btn buy-btn w-100">立即選購</button>
           </div>
         </div>
-      </div>
-    </div>
-    <loading v-if="loading"></loading>
-    <div class="container">
-      <div class="mt-4">
-        <!-- 商品列表 -->
-        <table class="table align-middle">
-          <thead>
-            <tr>
-              <th>圖片</th>
-              <th>商品名稱</th>
-              <th>價格</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in products" :key="item.id">
-              <td style="width: 200px">
-                <div
-                  style="
-                    height: 100px;
-                    background-size: cover;
-                    background-position: center;
-                  "
-                  :style="{ backgroundImage: `url(${item.imageUrl})` }"
-                ></div>
-              </td>
-              <td>{{ item.title }}</td>
-              <td>
-                <div class="price">{{ item.price }}</div>
-                <div class="origin_price">原價{{ item.origin_price }}</div>
-              </td>
-              <td>
-                <div class="btn-group btn-group-sm">
-                  <router-link
-                    :to="`/dashboardF/product/${item.id}`"
-                    class="btn btn-outline-secondary"
-                    >查看更多</router-link
-                  >
-                  <button type="button" class="btn btn-outline-danger">
-                    加到購物車
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+     </div>
       </div>
     </div>
   </div>
@@ -175,7 +136,61 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-wrap {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+.card-wrap{
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  word-wrap: break-word;
+  background-color: #fff;
+  overflow: hidden;
+  transition: .5s;
 }
+.img-wrap{
+  overflow: hidden;
+}
+
+.img-wrap img{
+  transition: 1s;
+  height: 15vw;
+}
+
+.card-wrap:hover {
+  box-shadow: 1px 1px 10px 1px #9c9c97;
+  filter: brightness(1.1);
+  transition: .5s;
+  overflow: hidden;
+
+  img{
+  transition: 1s;
+  transform: scale(1.1);
+  }
+}
+.productWrap{
+  text-decoration: none;
+  color: black;
+}
+
+.productWrap:hover{
+  color:rgb(59, 59, 59)
+}
+
+.buy-btn{
+  background-color: $mainColor;
+  color: white
+}
+
+@media (max-width: 576px) {
+  aside {
+    padding-right: 2rem;
+    padding-left: 2rem
+  }
+  .productList{
+    margin-top: 30px
+  }
+  .img-wrap img{
+    height: 40vw;
+  }
+}
+
 </style>

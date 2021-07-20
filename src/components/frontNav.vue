@@ -1,11 +1,11 @@
 <template>
-    <div id="nav">
+    <!-- <div id="nav"> -->
     <nav class="navbar navbar-expand-md navbar-light bg-light px-3">
       <!-- <a class="navbar-brand" href="#">首頁</a> -->
       <router-link to="/indexfront" class="nav-link">首頁</router-link>
 
         <!-- 購物車跟登入icon -->
-      <ul class="navbar-nav flex-row">
+      <ul class="navbar-nav navbar-icons flex-row">
           <li class="me-3">
             <span class="material-icons">
                 <router-link to="/dashboardF/login" class="nav-link member_login">perm_identity</router-link>
@@ -59,7 +59,7 @@
       </div>
 
     </nav>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -76,4 +76,12 @@ export default {
     color:white !important
   }
 }
+
+@media (min-width: 768px) {
+  .navbar-icons{
+    order:2
+  }
+
+}
+
 </style>
