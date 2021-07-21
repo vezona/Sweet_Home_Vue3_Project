@@ -180,6 +180,11 @@ export default {
   color: white
 }
 
+.buy-btn:hover{
+  color: white;
+  // font-weight: bold;
+}
+
 @media (max-width: 576px) {
   aside {
     padding-right: 2rem;
@@ -189,7 +194,14 @@ export default {
     margin-top: 30px
   }
   .img-wrap img{
-    height: 40vw;
+    height: 45vw;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .img-wrap img{
+    transition: 1s;
+    height: 18vw;
   }
 }
 

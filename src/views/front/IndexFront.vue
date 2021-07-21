@@ -1,8 +1,8 @@
 <template>
   <div>
-    <frontNav :class="{changeColor:scrollHeight>200}"></frontNav>
+    <frontNav :class="{changeColorGreen: scrollHeight>=200}"></frontNav>
     <div class="carousel"></div>
-    <swiper id="headSwiper" class="mt-5"
+    <swiper id="headSwiper" class=""
      :autoplay="autoplay" :loop="loop" effect="fade">
       <div class="headTextWrap">
         <div class="headText">
@@ -24,6 +24,7 @@
     <newIn></newIn>
     <productStyle></productStyle>
     <hotSale></hotSale>
+    <foot></foot>
   </div>
 </template>
 
@@ -32,6 +33,7 @@ import frontNav from '../../components/frontNav.vue'
 import newIn from '../../components/NewIn.vue'
 import productStyle from '../../components/ProductStyle.vue'
 import hotSale from '../../components/HotSale.vue'
+import foot from '../../components/footer.vue'
 
 import SwiperCore, {
   EffectCube,
@@ -64,7 +66,7 @@ export default {
   created () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  components: { frontNav, Swiper, SwiperSlide, newIn, productStyle, hotSale },
+  components: { frontNav, Swiper, SwiperSlide, newIn, productStyle, hotSale, foot },
   methods: {
     handleScroll () {
       // console.log(window.scrollY) // 垂直位移量，隨滾輪變動
@@ -78,21 +80,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.changeColor{
-   background-color: $mainColor !important;
-   transition: 1.5s;
-  //  color: black !important;
-}
+// .changeColorTransparent{
+//    background-color: transparent !important;
+//    transition: 1.5s;
+//    // 淡入動畫
+//    animation: fadein 6s ease;
+// }
 
 :deep(.navbar) {
+  // background-color: red !important;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 2;
   transition: 1s;
-  a {
+  animation: fadein 3s ease;
+  a:not(.dropdown-item) {
     color: black !important;
+  }
+}
+
+.changeColorGreen{
+   background-color: $mainColor !important;
+  :deep(a:not(.dropdown-item)) {
+    color: white !important;
   }
 }
 
@@ -105,7 +117,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 55vw;
+  height: 65vw;
   background-color: rgba(255, 255, 255, 0.1);
   z-index: 2;
 }
@@ -125,13 +137,24 @@ export default {
   border-radius: 5px;
   line-height: 3;
   letter-spacing: 5px;
+  // 淡入動畫
+  animation: fadein 6s ease;
 }
 
 .headSwiper img {
   width: 100%;
-  height: 50vw;
+  height: 60vw;
   object-fit: cover;
   object-position: 80% 100%;
+  // 淡入動畫
+  animation: fadein 3s ease;
+}
+
+// 淡入效果
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  // 100% {opacity: 0;}
 }
 
 .btn-light{

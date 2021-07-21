@@ -1,11 +1,12 @@
 <template>
     <div class="wrap">
       <loading v-if="loading"></loading>
-      <div class="container mt-5" v-else>
-        <div class="product-Info d-flex flex-wrap">
-         <div class="col-6">
+      <div class="container mt-4" v-else>
+        <breadCrumb class="breadcrumbWrap mb-5" :productTitle=product.title></breadCrumb>
+        <div class="product-Info mb-5 d-flex flex-wrap justify-content-center">
+         <div class="col-10 col-sm-6">
             <div class="showProductImg">
-              <img :src="previewImage === ''? product.imageUrl: previewImage" alt="">
+              <img :src="previewImage" alt="">
                <!-- swiper -->
                 <swiper
                   class="pt-2 pb-4"
@@ -21,25 +22,48 @@
           </div>
          </div>
 
-          <div class="col-6 px-3">
+          <div class="col-10 col-sm-6 px-3 d-flex flex-column justify-content-between">
             <div class="info">
              <h4> {{product.title}}</h4>
              <p>NT$ {{product.price}}</p>
+             <p>商品數量 {{product.num}}</p>
+            </div>
+            <div>
+              <p>{{warning}}</p>
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" @click="minus">-</button>
+                <input type="text" class="form-control text-center" :value="number">
+                <button class="btn btn-outline-secondary" type="button" @click="add">+</button>
+              </div>
+              <button class="btn btn-secondary w-100" type="button">加入購物車</button>
+            </div>
+
+          </div>
+        </div>
+        <!-- 商品描述tab -->
+        <div class="tabWrap">
+          <ul class="nav nav-tabs text-center">
+            <li class="nav-item col-6" v-for="(i, index) in tabs" :key="i.index">
+              <p class="tab" :class="{'active':tabIndex === index}" @click="showtab(index)">{{i}} {{index}}</p>
+            </li>
+          </ul>
+          <div class="tabContent p-3 ">
+            <div v-if="tabIndex===0">
+               <p >{{product.description}}</p>
+            </div>
+            <div v-else>
+              退換貨
+              購物
             </div>
           </div>
         </div>
-
-        <!-- swiper -->
-        <div class="col-6">
-
-        </div>
-
       </div>
     </div>
 </template>
 
 <script>
 import loading from '@/components/Loading.vue'
+import breadCrumb from '@/components/BreadCrumb.vue'
 
 import SwiperCore, {
   Navigation,
@@ -56,14 +80,18 @@ SwiperCore.use([Navigation, Pagination, Mousewheel, EffectFade])
 
 export default {
   name: 'product',
-  components: { loading, Swiper, SwiperSlide },
+  components: { loading, Swiper, SwiperSlide, breadCrumb },
   data () {
     return {
       product: '',
       loading: true,
       mousewheel: true,
       previewImage: '',
-      imgBorder: false
+      imgBorder: false,
+      number: 1,
+      warning: '',
+      tabs: ['產品描述', '購買須知'],
+      tabIndex: 0
     }
   },
   mounted () {
@@ -84,6 +112,7 @@ export default {
 
           // 圖庫塞入首圖
           this.product.imagesUrl.unshift(res.data.product.imageUrl)
+          this.previewImage = res.data.product.imageUrl
         } else {
           alert(res.data.message)
         }
@@ -92,16 +121,37 @@ export default {
   methods: {
     showImage (imgUrl, index) {
       this.previewImage = imgUrl
-      // console.log(event.currentTarget.src)
-      // if (imgUrl === event.currentTarget.src) {
-      //   event.currentTarget.classList.add('imgBorder')
-      // }
+    },
+    add () {
+      if (this.number < this.product.num) {
+        this.number += 1
+      } else {
+        this.number = this.product.num
+        this.warning = '庫存不足'
+      }
+    },
+    minus () {
+      this.warning = ''
+      if (this.number > 1) {
+        this.number -= 1
+      } else {
+        this.number = 1
+      }
+    },
+    showtab (index) {
+      this.tabIndex = index
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.wrap{
+  min-height: 500px;
+}
+.breadcrumbWrap{
+  background-color: #f8f9fa;
+}
 .showProductImg img{
     height: 25vw;
 }
@@ -136,7 +186,57 @@ export default {
 
 //
 .imgBorder{
-  border: 2px solid #2b6d7e
+  border: 4px solid #2b6d7e
+}
+
+.form-control{
+   border: 1px solid #2b6d7e
+}
+
+// Tabs
+.tabWrap{
+  cursor: pointer;
+}
+
+.tab{
+  margin-bottom: -1px;
+  background: none;
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.tab:hover{
+  border: 1px solid rgba(43,109,126,0.2);
+  // background-color: rgba(43,109,126,0.2);
+  color: black;
+}
+
+.tab.active{
+  border-bottom: 4px solid #2b6d7e;
+  // background-color: #2b6d7e;
+  color: #2b6d7e;
+  font-weight: bold;
+}
+
+.tabContent{
+  height: 400px;
+  background-color: rgba(43,109,126,0.1);
+}
+
+@media (max-width: 576px) {
+  .showProductImg img{
+    height: 50vw;
+  }
+  .swiper-slide img{
+    height: 20vw;
+    cursor: pointer;
+  }
+
 }
 
 </style>

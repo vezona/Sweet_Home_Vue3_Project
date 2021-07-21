@@ -4,11 +4,14 @@
       <h3 class="title fw-bold pb-5">產品風格</h3>
 
       <div class="d-flex flex-wrap">
-        <div class="style-wrap col-6">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4 p-2" v-for="i in 3" :key="i">
+          <div class="style-wrap">
           <router-link to="/dashboardF/ProductsList" class="hover-cover align-items-center justify-content-center">
           <span class="">日式</span>
           </router-link>
         </div>
+        </div>
+
       </div>
   </div>
 </div>
