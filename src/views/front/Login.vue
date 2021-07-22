@@ -43,9 +43,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .admin_login{
   padding: 0.5rem 1rem
 }
 
+.container{
+  min-height: 500px;
+}
 </style>

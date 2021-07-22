@@ -17,3 +17,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.container{
+  min-height: 500px;
+}
+</style>

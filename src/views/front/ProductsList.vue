@@ -136,6 +136,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container{
+  min-height: 500px;
+}
 
 .card-wrap{
   background-clip: border-box;

@@ -61,9 +61,7 @@
                   <div
                     v-if="
                       !temProduct.imagesUrl.length ||
-                      temProduct.imagesUrl[temProduct.imagesUrl.length - 1]
-                    "
-                  >
+                      temProduct.imagesUrl[temProduct.imagesUrl.length - 1]">
                     <button
                       class="btn btn-outline-primary btn-sm d-block w-100"
                       @click="temProduct.imagesUrl.push('')"
@@ -128,6 +126,16 @@
                     class="form-control"
                     placeholder="請輸入單位"
                     v-model="temProduct.unit"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="num">數量</label>
+                  <input
+                    id="num"
+                    type="text"
+                    class="form-control"
+                    placeholder="請輸入數量"
+                    v-model="temProduct.num"
                   />
                 </div>
               </div>
@@ -246,6 +254,10 @@ export default {
     },
     closeProductModal () {
       this.productModal.hide()
+    },
+    addNewImg () {
+      this.temProduct.imagesUrl = []
+      this.temProduct.imagesUrl.push('')
     },
     updateProduct () {
       // 先設定共用參數

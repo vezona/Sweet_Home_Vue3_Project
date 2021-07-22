@@ -1,10 +1,10 @@
 <template>
   <div>
-    <frontNav :class="{changeColorGreen: scrollHeight>=200}"></frontNav>
+    <frontNav :class="{changeColorGreen: scrollHeight>=200}" v-if="show"></frontNav>
     <div class="carousel"></div>
     <swiper id="headSwiper" class=""
      :autoplay="autoplay" :loop="loop" effect="fade">
-      <div class="headTextWrap">
+      <div class="headTextWrap" v-if="show">
         <div class="headText">
           <h3 class="fw-bold">滿足你對家的渴望</h3>
           <p>家的樣子，隨你所欲</p>
@@ -49,6 +49,7 @@ SwiperCore.use([EffectCube, Pagination, Autoplay, EffectFade])
 export default {
   data () {
     return {
+      show: false,
       navBgColor: 'white',
       scrollHeight: 0,
       swiperImg: [
@@ -66,6 +67,11 @@ export default {
   created () {
     window.addEventListener('scroll', this.handleScroll)
   },
+  mounted () {
+    setTimeout(() => {
+      this.show = true
+    }, 1500)
+  },
   components: { frontNav, Swiper, SwiperSlide, newIn, productStyle, hotSale, foot },
   methods: {
     handleScroll () {
@@ -80,12 +86,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .changeColorTransparent{
-//    background-color: transparent !important;
-//    transition: 1.5s;
-//    // 淡入動畫
-//    animation: fadein 6s ease;
-// }
 
 :deep(.navbar) {
   // background-color: red !important;
@@ -138,7 +138,7 @@ export default {
   line-height: 3;
   letter-spacing: 5px;
   // 淡入動畫
-  animation: fadein 6s ease;
+  animation: fadein 3s ease;
 }
 
 .headSwiper img {
@@ -147,7 +147,7 @@ export default {
   object-fit: cover;
   object-position: 80% 100%;
   // 淡入動畫
-  animation: fadein 3s ease;
+  animation: fadein 1s ease;
 }
 
 // 淡入效果

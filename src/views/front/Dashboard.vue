@@ -16,7 +16,8 @@ export default {
   },
   components: { frontNav, foot },
   mounted () {},
-  methods: {}
+  methods: {
+  }
 }
 </script>
 

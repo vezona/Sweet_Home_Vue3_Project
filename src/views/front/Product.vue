@@ -46,10 +46,10 @@
           <div class="info">
             <h4>{{ product.title }}</h4>
             <p>NT$ {{ product.price }}</p>
-            <p>商品數量 {{ product.num }}</p>
           </div>
           <div>
-            <p>{{ warning }}</p>
+            <!-- <p>{{ warning }}</p> -->
+            <p>商品剩餘庫存 {{ productLeftNumber }}</p>
             <div class="input-group mb-3">
               <button
                 class="btn btn-outline-secondary"
@@ -108,6 +108,7 @@
 <script>
 import loading from '@/components/Loading.vue'
 import breadCrumb from '@/components/BreadCrumb.vue'
+import emitter from '../../assets/js/emitter'
 
 import SwiperCore, {
   Navigation,
@@ -133,50 +134,58 @@ export default {
       previewImage: '',
       imgBorder: false,
       number: 1,
-      warning: '',
+      productLeftNumber: '',
       tabs: ['產品描述', '購買須知'],
       tabIndex: 0
     }
   },
   mounted () {
-    // console.log(this.$route) // 路由屬性
-    // console.log(this.$router) // 路由方法
-
-    console.log(this.$route.params.id) // 取得id
-    // axios方法連api取資料
-    const productId = this.$route.params.id
-    const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}`
-    this.$http.get(`${url}/product/${productId}`).then((res) => {
-      // console.log(res)
-      if (res.data.success) {
-        this.product = res.data.product
-        // console.log(this.product)
-        this.loading = false
-
-        // 圖庫塞入首圖
-        this.product.imagesUrl.unshift(res.data.product.imageUrl)
-        this.previewImage = res.data.product.imageUrl
-      } else {
-        alert(res.data.message)
-      }
-    })
+    this.getData()
   },
   methods: {
+    getData () {
+      // console.log(this.$route) // 路由屬性
+      // console.log(this.$router) // 路由方法
+
+      console.log(this.$route.params.id) // 取得id
+      // axios方法連api取資料
+      const productId = this.$route.params.id
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}`
+      this.$http.get(`${url}/product/${productId}`).then((res) => {
+        // console.log(res)
+        if (res.data.success) {
+          this.product = res.data.product
+          // console.log(this.product)
+          this.loading = false
+
+          // 圖庫塞入首圖
+          if (!this.product.imagesUrl) {
+            this.product.imagesUrl = []
+          }
+          this.product.imagesUrl.unshift(res.data.product.imageUrl)
+          this.previewImage = this.product.imageUrl
+          this.productLeftNumber = this.product.num - 1
+        } else {
+          alert(res.data.message)
+        }
+      })
+    },
     showImage (imgUrl, index) {
       this.previewImage = imgUrl
     },
     add () {
       if (this.number < this.product.num) {
         this.number += 1
+        this.productLeftNumber -= 1
       } else {
         this.number = this.product.num
-        this.warning = '庫存不足'
       }
     },
     minus () {
       this.warning = ''
       if (this.number > 1) {
         this.number -= 1
+        this.productLeftNumber += 1
       } else {
         this.number = 1
       }
@@ -195,6 +204,9 @@ export default {
         )
         .then((res) => {
           console.log(res)
+          this.$emit('addToCart')
+          // 發送emmiter事件，去更新navbar購物車
+          emitter.emit('update-cart')
           alert(res.data.message)
         })
         .catch((err) => {
