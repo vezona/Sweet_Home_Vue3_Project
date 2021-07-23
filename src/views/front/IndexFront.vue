@@ -171,7 +171,7 @@ export default {
   }
   .headText{
     line-height: 1;
-    top: 80%;
+    top: 62%;
   }
 }
 

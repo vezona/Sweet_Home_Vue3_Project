@@ -10,7 +10,7 @@
         防疫期間無法走出戶外沐浴陽光，那就邀請夏天進家門吧！
         挑選色彩繽紛傢俱，打造屬於自己的夏季氛圍。</p>
           </div>
-          <img class="col-4" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/UejXkVTo79C3PFOi9JQi1jWXnmn7pY5J8lCTspNKduzdXZ5LC3FYZB8gvWvUxkxfspdOuvVU95s0C22uXcFQWUB6KyT18NG6YW8UzW66CdSCwnNUrHMiQ7L0FkkE7yZf.png" alt="">
+          <img class="decoration col-4" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/UejXkVTo79C3PFOi9JQi1jWXnmn7pY5J8lCTspNKduzdXZ5LC3FYZB8gvWvUxkxfspdOuvVU95s0C22uXcFQWUB6KyT18NG6YW8UzW66CdSCwnNUrHMiQ7L0FkkE7yZf.png" alt="">
       </div>
   </div>
 </div>
@@ -37,6 +37,10 @@ export default {
     background: #2b6d7e;
     top: 45px;
     left: 0;
+}
+
+.decoration{
+  transform: scaleX(-1);
 }
 
 @media (max-width: 576px) {
